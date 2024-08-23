@@ -152,7 +152,7 @@ Nel 2017, la pubblicazione dell’articolo "Attention is All You Need" di Vaswan
 Con l’evoluzione dei Transformer, si svilupparono modelli di linguaggio di grandi dimensioni (LLM) come GPT-3 e GPT-4, che rappresentano lo stato dell’arte nella generazione di linguaggio naturale. Questi modelli, grazie alla loro scala e alla sofisticata architettura, non solo generano testo coerente e fluido, ma sono in grado di comprendere e rispondere a richieste complesse, adattandosi a vari contesti e seguendo istruzioni dettagliate. La loro capacità di generare contenuti creativi, risolvere problemi complessi e persino sostenere conversazioni complesse ha portato a un’ampia adozione in ambiti come l’automazione, l’assistenza virtuale e la generazione creativa di contenuti. Questi modelli hanno spinto i confini dell’NLP, evidenziando come i Transformer abbiano trasformato il modo in cui interagiamo con le macchine e aprendo nuove possibilità per il futuro.
 
 %% Sezione
-\section{Tecniche di addestramento e adattamento dei Large Language Model}
+\section{Tecniche di addestramento dei Large Language Model}
 
 %% Sottosezione
 \subsection{Processo di addestramento: Pre-Training e Fine-Tuning}
@@ -193,16 +193,127 @@ Oltre alle tecniche classiche, si applicano metodi avanzati per migliorare ulter
 
 L'intervento umano rimane centrale in queste fasi avanzate. Non solo annotatori etichettano i dati per creare il reward model, ma monitorano anche il processo di RLHF per assicurarsi che il modello non sviluppi comportamenti indesiderati. Questo ciclo di feedback è cruciale per garantire la qualità e l'affidabilità dei modelli nelle applicazioni reali, soprattutto in contesti critici o sensibili.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{immagini/pre-training-e-fine-tuning.png}
+    \caption{Diagramma del flusso delle fasi di addestramento di un LLM, dalla fase di pre-training fino alla generazione tramite prompt.}
+    \label{fig:example}
+\end{figure}
+
 \subsection{Scalabilità e parametri del modello}
 La scalabilità è uno degli aspetti chiave che ha permesso agli LLM di raggiungere livelli di prestazione straordinari. Con il termine "scalabilità" ci si riferisce alla capacità di un modello di gestire un numero sempre maggiore di parametri, che sono i valori numerici che il modello apprende durante l’addestramento. Un aumento nel numero di parametri consente al modello di rappresentare e processare con maggiore precisione informazioni linguistiche complesse, migliorando la sua capacità di comprendere e generare testo.
 
 \subsubsection{Il ruolo dei parametri nell'evoluzione degli LLM}
-I primi modelli di linguaggio, come GPT-2, operavano con centinaia di milioni di parametri. Tuttavia, con l’evoluzione dei modelli, si è passati a miliardi e persino centinaia di miliardi di parametri. Ad esempio, GPT-3, uno dei modelli più avanzati al momento del suo rilascio, conta 175 miliardi di parametri, mentre modelli successivi, come GPT-4, utilizzano dataset ancora più vasti e un numero ancora maggiore di parametri. Questo aumento esponenziale consente al modello di catturare sfumature semantiche e relazioni tra parole su scala globale, migliorando la sua capacità di risolvere task complessi e diversificati.
+I primi modelli di linguaggio, come GPT-2, operavano con centinaia di milioni di parametri. Tuttavia, con l’evoluzione dei modelli, si è passati a miliardi e persino centinaia di miliardi di parametri. Ad esempio, GPT-3, uno dei modelli più avanzati al momento del suo rilascio, conta 175 miliardi di parametri, mentre modelli successivi, come GPT-4, utilizzano dataset ancora più vasti e un numero di parametri più che doppio. Questo aumento esponenziale consente al modello di catturare sfumature semantiche e relazioni tra parole su scala globale, migliorando la sua capacità di risolvere task complessi e diversificati.
 
 \subsubsection{Il Ruolo dei Dati: disponibilità e limiti}
 Un aspetto cruciale nell'addestramento degli LLM riguarda la quantità e la qualità dei dati disponibili. Si prevede che, entro la fine di questo decennio, l’intera disponibilità di dati testuali generati dall’uomo potrebbe essere utilizzata per l'addestramento dei modelli, creando una situazione di "bottleneck" legata ai dati. Secondo stime recenti, se le tendenze attuali di sviluppo continuano, i dataset utilizzati per l’addestramento potrebbero esaurire l'intero stock di dati pubblici testuali tra il 2026 e il 2032.
 Con l'aumento delle dimensioni dei modelli e della quantità di dati necessari, l’industria si trova di fronte alla sfida di reperire nuove fonti di dati. Una volta esauriti i dati pubblici disponibili, che costituiscono la base principale per l'addestramento attuale, resta ancora un'enorme quantità di conoscenza derivabile da fonti non pubbliche o dal deep web, ossia il web non indicizzato e non accessibile tramite i motori di ricerca tradizionali. Secondo alcune stime, il deep web e i dati non pubblici, come le conversazioni nelle app di messaggistica istantanea e nei social media privati, potrebbero contenere fino a un quadrilione di token, una quantità comparabile all'intero web indicizzato. Inoltre, si sta esplorando l'uso di dati provenienti da fonti non testuali come immagini, video e audio, che possono essere integrati per arricchire l'addestramento dei modelli. Tuttavia, l’accesso e l’utilizzo di questi dati pongono sfide significative, tra cui questioni legali, di privacy e la qualità spesso inferiore rispetto ai dati pubblici, con potenziali rischi per la robustezza dei modelli.
 
+\subsubsection{Innovazioni per la scalabilità e la qualità dei dati}
+Per superare i limiti legati alla scarsità di dati testuali generati dall’uomo, la ricerca sta esplorando diverse soluzioni innovative. Tra queste, l’uso di dati sintetici generati dagli stessi modelli LLM si sta rivelando promettente. Questi dati sintetici possono essere creati per coprire gap specifici nei dataset esistenti, migliorando la diversità e la qualità delle informazioni disponibili. Un’altra linea di sviluppo è l’apprendimento multimodale, che permette ai modelli di integrare dati provenienti da fonti diverse, come immagini, video e audio. Questa fusione di modalità non solo arricchisce le capacità del modello, ma offre anche nuove prospettive di addestramento, sfruttando informazioni non linguistiche per potenziare la comprensione contestuale e semantica.
+
+\subsection{Sfide computazionali e soluzioni per la scalabilità degli LLM}
+Sebbene l’aumento dei parametri abbia portato a miglioramenti significativi nelle prestazioni degli LLM, ha anche introdotto sfide tecniche e logistiche notevoli. Addestrare un modello con centinaia di miliardi di parametri richiede risorse computazionali immense: l’addestramento di modelli come GPT-3, ad esempio, ha richiesto petaflop/s di potenza di calcolo per settimane, con costi stimati in milioni di dollari. Questi processi coinvolgono l’utilizzo di GPU e TPU di ultima generazione distribuite su cluster di larga scala. Inoltre, l’alto consumo energetico e la gestione di infrastrutture complesse pongono sfide logistiche significative.
+
+Nonostante l’espansione dei parametri migliori le capacità del modello, l’incremento non sempre si traduce in benefici lineari: superati certi livelli, i miglioramenti diventano marginali, rendendo necessario un bilanciamento attento tra la dimensione del modello e i vantaggi reali ottenuti. Per affrontare queste sfide, sono state sviluppate tecniche ad hoc, come la sparse attention che consente al modello di focalizzarsi solo su una parte selezionata delle informazioni, riducendo così il numero di operazioni e ottimizzando il costo computazionale, o i modelli Mixture-of-Experts (MoE) che attivano solo una porzione del modello per processare ogni input, distribuendo la complessità su diverse sottoreti e permettendo di scalare ulteriormente i parametri senza doverli utilizzare tutti contemporaneamente.
+
+\section{Generazione di testo e prompt engineering}
+Uno degli aspetti centrali nell’uso pratico dei Large Language Models (LLM) è il modo in cui si formulano e ottimizzano i prompt per ottenere risposte di alta qualità. Questo processo, noto come prompt engineering, si basa sulla capacità di sfruttare al meglio le potenzialità del modello attraverso istruzioni precise e ben strutturate fornite in linguaggio naturale. Il prompt engineering rappresenta l’arte e la scienza di formulare input specifici per i modelli linguistici di grandi dimensioni (LLM) al fine di ottenere risposte precise, contestualizzate e rilevanti. Questo processo è cruciale perché, nonostante la sofisticatezza degli LLM, l'efficacia delle risposte dipende fortemente dalla chiarezza, specificità e struttura del prompt. Un buon prompt può fare la differenza tra una risposta generica e una risposta dettagliata e pertinente, permettendo al modello di sfruttare appieno le sue capacità. Le linee guida, le tecniche e i parametri specifici del modello sono tutti elementi essenziali per massimizzare i risultati. L’arte di formulare un buon prompt può determinare il successo nell’ottenere risultati di qualità e nell’adattare la generazione di testo alle necessità specifiche dell’utente.
+
+\subsection{Linee guida per un buon prompt}
+Per ottenere risultati precisi e pertinenti dai modelli di linguaggio, è essenziale progettare prompt chiari e ben strutturati. Un buon prompt deve fornire le giuste informazioni, contestualizzare il task e definire chiaramente le aspettative. Di seguito sono descritte le linee guida principali per massimizzare l'efficacia dei prompt.
+
+\subsubsection{Fornire contesto}
+È fondamentale includere informazioni contestuali che possano orientare il modello nella generazione di risposte appropriate. Il contesto può riguardare il tema trattato, il tipo di pubblico a cui è destinato il contenuto o eventuali prerequisiti da considerare. Un contesto ben definito consente al modello di allineare meglio le sue risposte con le aspettative dell’utente.
+
+\subsubsection{Istruzioni dettagliate}
+Un prompt deve essere accompagnato da istruzioni precise che descrivano in maniera dettagliata il compito richiesto. In questo modo, il modello riceve indicazioni chiare sul tipo di output da generare, minimizzando l'ambiguità e migliorando la pertinenza della risposta. È consigliabile utilizzare verbi che esprimano azioni concrete e dirette, come "analizzare", "descrivere", o "sintetizzare".
+
+\subsubsection{Definizione di un ruolo per il modello}
+Attribuire un ruolo specifico al modello è una strategia utile per ottenere risposte più focalizzate e coerenti. Definire il modello come un esperto in un determinato settore o come un interlocutore che si rivolge a un pubblico specifico permette di adattare il tono e la struttura dell’output generato, migliorando la qualità complessiva della risposta.
+
+\subsubsection{Specifiche dell’output}
+Stabilire in modo esplicito le caratteristiche dell’output desiderato, come il formato, la lunghezza o la struttura, è essenziale per guidare il modello verso una produzione testuale conforme alle necessità dell’utente. Indicare con precisione il numero di parole, frasi o paragrafi, così come l’eventuale suddivisione in elenchi puntati o sezioni, contribuisce a rendere l’output più adeguato al contesto di utilizzo.
+
+\subsubsection{Definizione di regole e vincoli}
+Un buon prompt può includere regole specifiche o vincoli da rispettare durante la generazione del testo. Tali regole possono riguardare, ad esempio, il mantenimento di un certo registro linguistico, l’esclusione di determinate informazioni o l’adozione di un particolare stile narrativo. L’imposizione di questi vincoli consente di affinare ulteriormente l’output e di adattarlo a specifiche esigenze di comunicazione.
+
+\subsection{Tecniche avanzate di prompt engineering}
+Oltre alle linee guida di base per la progettazione di prompt efficaci, esistono strategie avanzate che permettono di gestire task complessi, sfruttare capacità multimodali e migliorare il ragionamento del modello. Queste tecniche sono particolarmente utili in contesti che richiedono un elevato grado di precisione o l'integrazione di informazioni provenienti da fonti diverse.
+
+\subsubsection{Divisione dei task complessi}
+In presenza di task articolati o con più fasi, suddividere il problema in sotto-task più gestibili consente di guidare il modello in modo progressivo. Questo approccio prevede l'uso di prompt sequenziali che richiedono al modello di affrontare un passo alla volta, facilitando la gestione di attività complesse e migliorando la qualità complessiva dell’output. La scomposizione permette anche di verificare l’accuratezza delle risposte in ogni fase, prima di procedere al passaggio successivo.
+
+\subsubsection{Utilizzo di modelli multimodali}
+I modelli multimodali sono progettati per elaborare input provenienti da più domini, come testo, immagini, audio e video, e generare output integrati. Questa capacità estende l'utilità dei modelli di linguaggio a scenari in cui è necessaria la combinazione di dati eterogenei. Nella progettazione di prompt per questi modelli, è cruciale specificare chiaramente il tipo di input desiderato e le modalità con cui le informazioni devono essere correlate, per ottenere risposte coerenti e complete.
+
+\subsubsection{Socratic prompting}
+Il Socratic Prompting è una tecnica che si ispira al metodo socratico, basato sull'uso di domande successive per stimolare il ragionamento e l’approfondimento. Questa strategia prevede una serie di domande mirate, progettate per guidare il modello nell’esplorazione di un concetto complesso attraverso risposte progressive. Il vantaggio di questo approccio risiede nella capacità di esplorare il problema da più angolazioni, favorendo l’emergere di risposte più articolate e riflessive.
+
+\subsection{Tecniche di prompt per l'ottimizzazione dei modelli di linguaggio}
+Nell’ambito dell’ingegneria dei prompt, esistono diverse tecniche che permettono di guidare i modelli di linguaggio a seconda del tipo di task e del livello di complessità richiesto. Le principali tecniche sono illustrate di seguito.
+
+\subsubsection{Zero-Shot prompting}
+Zero-shot prompting è una tecnica in cui il modello di linguaggio viene sollecitato a rispondere senza fornire esempi specifici relativi al compito richiesto. In questa configurazione, il modello si affida unicamente alla sua capacità generale di comprensione per generare un output appropriato. Questa tecnica è utile in scenari in cui non sono disponibili esempi predefiniti o quando si cerca una risposta basata unicamente sulla conoscenza pre-allenata del modello.
+
+\subsubsection{One-Shot prompting}
+Con il one-shot prompting, si include un singolo esempio all’interno del prompt per indicare al modello la struttura o la logica della risposta desiderata. L’aggiunta di un esempio permette al modello di adattare meglio il suo output, migliorando la precisione rispetto al contesto specifico. Questo metodo è particolarmente utile per task che richiedono un format o uno stile specifico, dove anche un solo esempio può fare la differenza.
+
+\subsubsection{Few-Shot prompting}
+Il few-shot prompting si basa sull’inclusione di più esempi all’interno del prompt. Questa tecnica consente al modello di osservare e generalizzare pattern più complessi, migliorando la coerenza e l’affidabilità dell’output per task articolati. Il few-shot prompting è ampiamente utilizzato per task come il completamento di frasi, la traduzione automatica e il riassunto, dove un contesto esteso aiuta il modello a cogliere meglio le sfumature del compito.
+
+\subsubsection{Multi-Shot prompting}
+Il multi-shot prompting estende ulteriormente il numero di esempi forniti al modello, permettendo di affrontare task molto complessi. Fornendo un’ampia gamma di esempi, il modello riesce a raffinare la propria comprensione e a produrre risposte dettagliate e articolate. Questa tecnica è adatta a contesti in cui la varietà di casi di input richiede un approccio flessibile e altamente adattabile.
+
+\subsubsection{Chain-of-Thought Prompting (CoT)}
+Il chain-of-thought prompting è una tecnica avanzata in cui il modello viene guidato a suddividere un problema complesso in passaggi logici sequenziali. Questa strategia sfrutta la capacità del modello di sviluppare un ragionamento articolato attraverso una serie di step interconnessi. Il CoT è particolarmente utile per task che richiedono deduzione, ragionamento matematico o problemi multi-step, dove la sequenza logica degli argomenti è fondamentale per arrivare a una soluzione corretta.
+
+\subsubsection{Zero-Shot Chain-of-Thought (CoT) Prompting}
+Il zero-shot chain-of-thought prompting combina l’approccio zero-shot con la logica del chain-of-thought. In questa configurazione, il modello è incoraggiato a generare un ragionamento sequenziale senza la necessità di fornire esempi espliciti. Il modello è indotto a creare autonomamente un flusso di pensieri articolato, guidando la risoluzione del task attraverso una serie di passaggi logici, anche quando non è stato addestrato su task specifici che coinvolgono tali processi.
+
+\subsection{Configurazione dei parametri per l’ottimizzazione della generazione del testo}
+Nell’interazione con modelli di linguaggio di grandi dimensioni (LLM), la configurazione dei parametri tecnici è fondamentale per controllare e ottimizzare la qualità dell’output generato. Ogni parametro regola aspetti diversi del comportamento del modello, influenzando sia la creatività che la coerenza delle risposte. È importante comprendere il range di valori disponibili per ciascun parametro e come questi possono essere modulati per ottenere risultati desiderabili.
+Di seguito vengono descritti i principali parametri configurabili, illustrando prima i range operativi e poi l’effetto che valori specifici possono avere sulla generazione del testo.
+
+\subsubsection{Temperatura}
+Il parametro della temperatura controlla il grado di casualità nell’output generato. Il range tipico varia tra 0 e 1. Con valori vicini allo 0, il modello tende a essere deterministico, generando risposte prevedibili e concrete, selezionando sempre il token più probabile. Al contrario, valori prossimi a 1 aumentano l’esplorazione di token meno frequenti, favorendo la creatività.
+Valori bassi della temperatura, tra 0.0 e 0.3, sono ideali per compiti in cui è richiesta precisione, come il question answering basato sui fatti o la sintesi di informazioni, dove è preferibile che l’output sia concreto e privo di variabilità. Valori intermedi, tra 0.4 e 0.7, rappresentano un compromesso tra creatività e precisione, adattandosi a contesti dove è richiesta una certa flessibilità nella risposta. Infine, valori alti, tra 0.8 e 1.0, sono indicati per la generazione di testi creativi, come racconti, poesie o contenuti in cui l’originalità e la varietà sono più importanti della coerenza assoluta.
+
+\subsubsection{Top P (Campionamento del Nucleo)}
+Il parametro \textit{top\_p}, noto anche come campionamento del nucleo, definisce il sottoinsieme di token da cui il modello può scegliere durante la generazione del testo. Il range varia tra 0 e 1. Con valori bassi, ad esempio 0.2 o 0.3, vengono considerati solo i token con le probabilità più alte, producendo risposte sicure e prevedibili. Valori più alti, come 0.8 o 0.9, permettono al modello di esplorare opzioni meno comuni, generando un output più variegato.
+Quando \textit{top\_p} è impostato a 1, il modello considera tutti i token possibili, producendo risposte altamente creative ma potenzialmente incoerenti. Se si desidera un output preciso e mirato, si consiglia di mantenere \textit{top\_p} tra 0.2 e 0.4. In contesti in cui è importante ottenere risposte diverse e creative, è preferibile impostare \textit{top\_p} tra 0.7 e 0.9. È importante notare che, in molti casi, è consigliabile modificare la temperatura o \textit{top\_p}, ma non entrambi contemporaneamente, per mantenere un controllo efficace sull’output generato.
+
+\subsubsection{Lunghezza Massima}
+La lunghezza massima specifica il numero massimo di token che il modello può generare, permettendo di gestire l’estensione dell’output. Questo parametro è essenziale per evitare risposte eccessivamente prolisse o fuori tema, e per ottimizzare i costi computazionali.
+Tipicamente, per task che richiedono risposte concise e precise, si consiglia di limitare la lunghezza massima a 50-100 token. Per risposte più articolate o descrizioni approfondite, è possibile estendere questo limite a 200-300 token. La configurazione della lunghezza massima dipende strettamente dalla natura del task e dal livello di dettaglio richiesto.
+
+\subsubsection{Sequenze di Stop}
+Le sequenze di stop sono stringhe che indicano al modello quando interrompere la generazione del testo, migliorando così la struttura e la coerenza dell’output. Questo parametro è particolarmente utile per controllare la lunghezza della risposta o per strutturare l’output in sezioni specifiche. Ad esempio, in un elenco puntato, è possibile utilizzare sequenze di stop per evitare che il modello generi più voci del necessario.
+
+\subsubsection{Penalità di Frequenza}
+La penalità di frequenza regola la probabilità che il modello ripeta lo stesso token più volte all’interno dell’output. Questo parametro varia tipicamente da 0 a 2. Con valori più alti, come 0.8 o 1.0, la probabilità di ripetizione diminuisce, favorendo una maggiore diversificazione del testo generato. Valori più bassi, tra 0.2 e 0.5, consentono un certo grado di ripetizione, utile in contesti in cui la coerenza del discorso è prioritaria.
+
+\subsubsection{Penalità di Presenza}
+Simile alla penalità di frequenza, la penalità di presenza agisce sui token ripetuti, ma applica una penalità uniforme, indipendentemente dal numero di occorrenze. Con valori alti, tra 0.6 e 0.8, si limita la ripetizione, migliorando la varietà dell’output. Valori bassi, tra 0.1 e 0.3, permettono una maggiore continuità tematica, rendendo il testo più coeso.
+
+\subsection{Problematiche della generazione del testo}
+Nonostante i progressi significativi ottenuti con i modelli di linguaggio di grandi dimensioni (LLM), la generazione automatica del testo presenta ancora diverse problematiche critiche che ne limitano l’applicabilità in contesti che richiedono affidabilità e precisione. Di seguito vengono analizzati i principali ostacoli che emergono durante l’uso di LLM in diversi scenari applicativi.
+
+\subsubsection{Allucinazioni nei Modelli di Linguaggio}
+Uno dei principali limiti degli LLM è la tendenza a generare informazioni false o non pertinenti, fenomeno noto come “allucinazione”. Queste allucinazioni si verificano quando il modello produce contenuti apparentemente plausibili ma che non corrispondono a fatti reali o informazioni verificate. Questo problema è particolarmente critico in contesti che richiedono un elevato grado di accuratezza, come la ricerca scientifica, la medicina o il diritto. Le allucinazioni possono derivare sia dalla mancanza di controllo sull'output sia da un’interpretazione eccessivamente creativa di prompt che non forniscono contesto sufficiente o che sono ambigui. Affrontare questo problema richiede un’attenta progettazione dei prompt e l’eventuale integrazione di meccanismi di verifica basati su fonti esterne. In questo contesto, l’approccio Retrieval-Augmented Generation (RAG) rappresenta una soluzione promettente. Il RAG combina la generazione del testo con il recupero di informazioni esterne durante l’elaborazione, permettendo al modello di consultare fonti aggiornate e pertinenti. Ciò riduce il rischio di allucinazioni e migliora l’accuratezza delle risposte, soprattutto in domini dove l’aggiornamento continuo delle informazioni è fondamentale.
+
+\subsubsection{Coerenza e coesione del discorso}
+Un’altra sfida riguarda la capacità del modello di mantenere la coerenza tematica e stilistica all'interno di testi più lunghi o complessi. In task complessi o in testi più lunghi, i modelli possono perdere il filo logico del discorso, producendo output che risultano disorganizzati o incoerenti rispetto al contesto iniziale. Questo è spesso dovuto all’incapacità del modello di gestire correttamente il contesto a lungo termine. Questa limitazione diventa evidente in testi argomentativi o narrativi, dove il modello può deviare dal tema centrale, generando informazioni non pertinenti o ripetitive. La gestione efficace del contesto a lungo termine rimane una sfida aperta per la ricerca, richiedendo soluzioni che combinino la modellazione del discorso con strategie di memoria più avanzate.
+
+\subsubsection{Aderenza alle istruzioni e comprensione del prompt}
+L’efficacia del prompting dipende in gran parte dalla capacità del modello di interpretare correttamente le istruzioni fornite. Sebbene tecniche come il few-shot o il chain-of-thought prompting possano migliorare la comprensione del compito, i modelli spesso faticano a seguire istruzioni articolate o a rispondere a prompt complessi che richiedono risoluzioni multi-step. Questo problema si aggrava in presenza di ambiguità o di richieste multiple all'interno dello stesso prompt, portando il modello a generare output incompleti o non conformi alle aspettative. Per ovviare a questa limitazione, è necessario affinare la progettazione dei prompt e, in alcuni casi, ricorrere a un’interazione iterativa con il modello per ottenere il risultato desiderato.
+
+\subsubsection{Bias nei dati e riproduzione di stereotipi}
+Gli LLM, essendo addestrati su grandi quantità di dati non supervisionati, possono riprodurre bias e stereotipi presenti nel corpus di addestramento. Questi bias possono emergere nella generazione del testo sotto forma di pregiudizi impliciti o generalizzazioni inadeguate, con implicazioni etiche rilevanti quando il modello viene utilizzato in contesti sensibili. Sebbene esistano tecniche di mitigazione dei bias, come il fine-tuning su dati diversificati o l’applicazione di filtri etici, la piena eliminazione di questi effetti rimane complessa e richiede un monitoraggio continuo del comportamento del modello.
+
+\subsubsection{Controllo della creatività e limiti delle generazioni}
+Mentre la configurazione dei parametri come la temperatura o il \textit{top\_p} permette di regolare la creatività dell’output, è difficile bilanciare perfettamente la generazione di contenuti creativi con la necessità di mantenere un focus sul task specifico. In alcuni casi, la ricerca di originalità può portare a output che, pur essendo vari e innovativi, risultano incoerenti o non allineati agli obiettivi del task. Al contrario, un controllo eccessivo della generazione può limitare la varietà dell’output, sacrificando la ricchezza espressiva. Questo compromesso tra creatività e precisione continua a rappresentare una sfida, soprattutto in ambiti dove è necessario produrre contenuti che siano allo stesso tempo originali e aderenti alle aspettative.
 
 % Capitolo
 \chapter{Design della soluzione}
