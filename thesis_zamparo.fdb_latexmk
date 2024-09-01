@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex thesis_zamparo"] 1724783282.53543 "thesis_zamparo.aux" "thesis_zamparo.bbl" "thesis_zamparo" 1724783284.59673 0
+["bibtex thesis_zamparo"] 1725192188.36828 "thesis_zamparo.aux" "thesis_zamparo.bbl" "thesis_zamparo" 1725192190.2807 0
   "./plain_italian.bst" 1722074532 20656 b9f53fc1e71a9c29c62ec7586a3d5fef ""
-  "./thesis_bibliography.bib" 1724782318.00092 10941 737845ee31e8108b5341db03b18d9ca4 ""
-  "thesis_zamparo.aux" 1724783284.11245 12569 6076718682311179e96ff489f6008d85 "pdflatex"
+  "./thesis_bibliography.bib" 1725189577.26754 13627 1183f904e3fdb158ce7be121880e7a50 ""
+  "thesis_zamparo.aux" 1725192189.80717 13582 7d420eead76c0fdc0151c5478c95ad89 "pdflatex"
   (generated)
   "thesis_zamparo.bbl"
   "thesis_zamparo.blg"
   (rewritten before read)
-["pdflatex"] 1724783282.73833 "/Users/salabianca/Desktop/Tesi/LaTeX/UniUD/thud-master/thesis_zamparo.tex" "thesis_zamparo.pdf" "thesis_zamparo" 1724783284.597 0
-  "/Users/salabianca/Desktop/Tesi/LaTeX/UniUD/thud-master/thesis_zamparo.tex" 1724783280.41584 69647 cce7b2193fd027184cdd0c12a4f92971 ""
+["pdflatex"] 1725192188.56642 "/Users/salabianca/Desktop/Tesi/LaTeX/UniUD/thud-master/thesis_zamparo.tex" "thesis_zamparo.pdf" "thesis_zamparo" 1725192190.28096 0
+  "/Users/salabianca/Desktop/Tesi/LaTeX/UniUD/thud-master/thesis_zamparo.tex" 1725192185.6011 74123 b0945b38e28d0381ec9aea1d5e6fa6e7 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -133,12 +133,12 @@
   "banners/banner_uniud_italian.pdf" 1722074532 311097 62975c512007c5765beb1e5d4b3b9fb6 ""
   "book.thud.tex" 1722074532 8194 cc88fdb259aa89be92cf1f36cf80a0cc ""
   "immagini/pre-training-e-fine-tuning.png" 1724316777.91909 96234 8762ce60dd713520aeab556567c50e42 ""
-  "pdfa.xmpi" 1724783283.79239 5042 6d152e4b72349bc0f1e48aa76c7a9f82 "pdflatex"
-  "thesis_zamparo.aux" 1724783284.11245 12569 6076718682311179e96ff489f6008d85 "pdflatex"
-  "thesis_zamparo.bbl" 1724783282.73334 6005 cadec25519d11534dc8f6f3ac7d8b540 "bibtex thesis_zamparo"
-  "thesis_zamparo.out" 1724783284.11509 4140 483bc6f9230e6c3bafe1b5eeeb01191d "pdflatex"
-  "thesis_zamparo.tex" 1724783280.41584 69647 cce7b2193fd027184cdd0c12a4f92971 ""
-  "thesis_zamparo.toc" 1724783284.11555 7454 7e131a4ed5ee31647d51ad2f417a59b2 "pdflatex"
+  "pdfa.xmpi" 1725192189.49378 5042 f656d364f8ce76efeeb2feb90f14a176 "pdflatex"
+  "thesis_zamparo.aux" 1725192189.80717 13582 7d420eead76c0fdc0151c5478c95ad89 "pdflatex"
+  "thesis_zamparo.bbl" 1725192188.56154 8063 11575730bdce507e657422b7a3466aa6 "bibtex thesis_zamparo"
+  "thesis_zamparo.out" 1725192189.80981 4140 483bc6f9230e6c3bafe1b5eeeb01191d "pdflatex"
+  "thesis_zamparo.tex" 1725192185.6011 74123 b0945b38e28d0381ec9aea1d5e6fa6e7 ""
+  "thesis_zamparo.toc" 1725192189.81027 7451 71f17bf42726afda45c96cc3ab0edfba "pdflatex"
   "thud.cls" 1722074532 6747 34fd740a843e0f4c23172ea0cfac1b63 ""
   (generated)
   "pdfa.xmpi"
